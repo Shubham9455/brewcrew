@@ -1,3 +1,4 @@
+import 'package:brewcrew/pages/authenticate/register.dart';
 import 'package:brewcrew/pages/authenticate/sign-in.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +10,16 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
+  bool showSignIn = true;
+  void toggleView(){
+    setState(() => showSignIn = !showSignIn);
+  }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SignIn(),
-    );
+    if (showSignIn) {
+      return SignIn(toggleView:  toggleView);
+    } else {
+      return Register(toggleView:  toggleView);
+    }
   }
 }
